@@ -4,6 +4,8 @@ require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') });
 const {
   ACCESS_TOKEN_SECRET,
   ACCESS_TOKEN_TIME,
+  REFRESH_TOKEN_SECRET,
+  REFRESH_TOKEN_TIME,
   SQUADHELP_BANK_NUMBER,
   SQUADHELP_BANK_NAME,
   SQUADHELP_BANK_CVC,
@@ -13,6 +15,9 @@ const {
 module.exports = {
   JWT_SECRET: ACCESS_TOKEN_SECRET,
   ACCESS_TOKEN_TIME,
+  ACCESS_TOKEN_SECRET,
+  REFRESH_TOKEN_SECRET,
+  REFRESH_TOKEN_TIME,
   SALT_ROUNDS: 5,
   SQUADHELP_BANK_NUMBER,
   SQUADHELP_BANK_NAME,
@@ -40,4 +45,8 @@ module.exports = {
   NOTIFICATION_CHANGE_OFFER_STATUS: 'changeOfferStatus',
   NEW_MESSAGE: 'newMessage',
   CHANGE_BLOCK_STATUS: 'CHANGE_BLOCK_STATUS',
+  TRANSACTION_TYPES: {
+    INCOME: 'income',
+    EXPENSE: 'expense',
+  },
 };
