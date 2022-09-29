@@ -39,7 +39,7 @@ module.exports.dataForContest = async (req, res, next) => {
 module.exports.getContestById = async (req, res, next) => {
   try {
     const{params:{contestId}}=req;
-    let contestInfo = await db.Contests.findOne({
+    let contestInfo = await Contest.findOne({
       where: { id:contestId },
       order: [
         [Offer, 'id', 'asc'],
@@ -217,7 +217,8 @@ module.exports.setOfferStatus = async (req, res, next) => {
 
 module.exports.getCustomersContests = (req, res, next) => {
   const{tokenData:{userId},query:{limit,offset,status}}=req;
-  db.Contests.findAll({
+  console.log (req.query);
+  Contest.findAll({
     where: { status: status, userId: userId },
     limit: limit,
     offset: offset ? offset : 0,
@@ -244,16 +245,17 @@ module.exports.getCustomersContests = (req, res, next) => {
 
 module.exports.getContests = (req, res, next) => {
   const {body:{typeIndex,contestId,industry,awardSort,ownEntries},query:{limit,offset},tokenData:{userId}}=req
+  console.log (req.query);
   const predicates = UtilFunctions.createWhereForAllContests(typeIndex,
     contestId,industry,awardSort);
-  db.Contests.findAll({
+  Contest.findAll({
     where: predicates.where,
     order: predicates.order,
     limit: limit,
     offset: offset ? offset : 0,
     include: [
       {
-        model: db.Offers,
+        model: Offer,
         required: ownEntries,
         where: ownEntries ? { userId: userId } : {},
         attributes: ['id'],
