@@ -23,7 +23,7 @@ export const createCatalog = (data) => http.post('createCatalog', data);
 export const deleteCatalog = (data) => http.post('deleteCatalog', data);
 export const removeChatFromCatalog = (data) => http.post('removeChatFromCatalog', data);
 export const changeCatalogName = (data) => http.post('updateNameCatalog', data);
-export const getCustomersContests = ({contestStatus,limit,offset}) => http.post(`getCustomersContests?status=${contestStatus}&limit=${limit}&offset=${offset}`,{limit,offset});
+export const getCustomersContests = ({contestStatus,limit,offset}) => http.post(`getCustomersContests?status=${contestStatus}&limit=${limit}&offset=${offset}`);
 
 export const getActiveContests = ({
   typeIndex, contestId, industry, awardSort, ownEntries,limit,offset
